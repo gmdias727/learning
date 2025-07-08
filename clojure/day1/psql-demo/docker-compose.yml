@@ -1,0 +1,20 @@
+services:
+  clojure-backend:
+    image: postgres:16-alpine3.21
+    container_name: cutpass_database
+    environment:
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: dev
+      POSTGRES_DB: dev
+    ports:
+      - 5432:5432
+    volumes:
+      - clojure-backend:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  clojure-backend:
+
+networks:
+  default:
+    driver: bridge
