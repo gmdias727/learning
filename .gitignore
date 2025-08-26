@@ -1,3 +1,11 @@
 clojure/day1/.clj-kondo
 clojure/day1/.lsp
 clojure/day1/psql-demo/.lsp/.cache/db.transit.json
+
+.clj-kondo
+.clj-kondo/
+.clj-kondo/*
+
+.lsp
+
+c/lecture-1/main
