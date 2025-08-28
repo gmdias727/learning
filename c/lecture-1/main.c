@@ -8,26 +8,33 @@ int sum(int a, int b) {
   return a + b;
 }
 
-int calc(char op, int x, int y) {
-  switch (op)
-  {
+typedef struct {
+  int value;
+  int error;
+} Result;
+
+Result calc(char op, int x, int y) {
+  Result r = {0 , 0};
+
+  switch (op) {
   case '+':
-    return x + y;
+    r.value = x + y;
     break;
   case '-':
-    return x - y;
+    r.value = x - y;
     break;
   case '*':
-    return x * y;
+    r.value = x * y;
     break;
   case '/':
-    return x / y;
+    if (y == 0 || x == 0) r.error = 1;
+    r.value = x / y;
     break;
   default:
-    printf("error");
-    return 0;
-    break;
+    r.error = 1;
   }
+
+  return r;
 }
 
 int main() {
@@ -36,7 +43,7 @@ int main() {
   printf("%d\n", calc('*', 20, 50));
   printf("%d\n", calc('+', 20, 50));
   printf("%d\n", calc('-', 20, 50));
-  printf("%d\n", calc('/;', 200, 3));
+  printf("%d\n", calc('/', 0, 3));
 
   return 0;
 };
