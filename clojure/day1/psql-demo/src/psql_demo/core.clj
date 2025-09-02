@@ -1,20 +1,21 @@
 (ns psql-demo.core
-  (:require [clojure.java.jdbc :as jdbc])
+  (:require [clojure.java.jdbc :as jdbc] 
+            [environ.core :refer [env]])
   (:gen-class))
 
-(def db-spec
-  {:dbtype "postgresql"
-   :dbname "dev"
-   :host "localhost"
-   :port 5432
-   :user "dev"
-   :password "dev"})
+(def db
+  {:dbtype (env :db-type)
+   :dbname (env :db-name)
+   :host (env :db-host)
+   :port  (env :db-port)
+   :user (env :db-user)
+   :password (env :db-password)})
 
 (defn get-version []
-  (jdbc/query db-spec ["SELECT version()"]))
+  (jdbc/query db ["SELECT version()"]))
 
 (defn create-users-table []
-  (jdbc/execute! db-spec
+  (jdbc/execute! db
                  ["CREATE TABLE IF NOT EXISTS users (
                     id SERIAL PRIMARY KEY,
                     name VARCHAR(100) NOT NULL,
@@ -22,7 +23,7 @@
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)"]))
 
 (defn add-user [name email]
-  (jdbc/insert! db-spec :users {:name name
+  (jdbc/insert! db :users {:name name
                                  :email email}))
 
 (defn tables []
@@ -37,5 +38,6 @@ tables
   (println "Database version:")
   (let [version (first (get-version))]
     (println (:version version)))
+  (println "ENVIRON DEBUG:" (env))
   (println "Done.")
   (println get-version))
