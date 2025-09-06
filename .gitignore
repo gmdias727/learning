@@ -9,3 +9,5 @@ clojure/day1/psql-demo/.lsp/.cache/db.transit.json
 .lsp
 
 c/lecture-1/main
+.vscode/settings.json
+c/lecture-3/c/main

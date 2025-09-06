@@ -52,8 +52,8 @@ int count_chars(const char *str) {
 
 int guess_number(int a) {
     int secret = 42;
-    if ( a < secret ) return printf("number to low");
-    if ( a > secret ) return printf("number to high");
+    if ( a < secret ) return printf("number too low");
+    if ( a > secret ) return printf("number too high");
     if ( a == secret ) return printf("correct guess");
 
 }
