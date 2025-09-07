@@ -1,3 +1,4 @@
+
 (* Loops == Recursion? *)
 
 (* let counter number: int : loop ->
@@ -54,19 +55,39 @@ let () =
   print_newline ();;
 
 let new_word = "The quick brown fox"
-let split_into_list =
+let phrase =
   String.split_on_char ' ' new_word
-
 let () =
-  List.iter (Printf.printf "%s ") split_into_list;
+  List.iter (Printf.printf "%s ") phrase;
   print_newline ();;
 
 (* You’re not just learning OCaml — you’re learning how to trust your brain, even when it feels messy.
 
 And that’s the most important skill of all. *)
 
-let count_words (list) = List.length list
-let total = count_words split_into_list
+let words_count list = List.length list
+let total = words_count phrase
 
 let () =
   Printf.printf "%d \n" total
+
+let rec fact x =
+  if x < 0 then
+    0
+  else if x = 0 then
+    1
+  else
+    x * fact (x - 1)
+
+(*
+   The function fact applied to x is defined as:
+   if x is less than 0, then the result is 0
+   if x is equal to 0, then the result is 1
+   Otherwise, the result is x mutiplied by the result of fact(x - 1)
+*)
+
+let result = fact 99
+
+
+let () =
+  Printf.printf "%d \n" result
