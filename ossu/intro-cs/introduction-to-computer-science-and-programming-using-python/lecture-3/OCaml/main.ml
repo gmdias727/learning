@@ -86,7 +86,7 @@ let rec fact x =
    Otherwise, the result is x mutiplied by the result of fact(x - 1)
 *)
 
-let result = fact 99
+let result = fact 6
 
 
 let () =
