@@ -1,3 +1,5 @@
+#include <locale.h>
+#include <stddef.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -11,25 +13,35 @@ int is_even(int range[], int length) {
     return count;
 };
 
-int find_duplicates(char text[]) {
+
+void find_duplicates(char text[]) {
+
     int length = strlen(text);
-    int count = 0;
+
+    int freq[256] = {0};
 
     for (int i = 0; i < length; i++) {
-        for (int j = i + 1; j < length; j++) {
-            if (text[i] == text[j]) {
-                count++;
-                break;
-            }
+        unsigned char c = text[i];
+        freq[c]++;
+    }
+
+    printf("Caracteres repetidos: \n");
+    int found = 0;
+    for (int i = 0; i < 256; i++) {
+        if (freq[i] > 1) {
+            printf("%c' aparece %d vezes\n", i, freq[i]);
         }
     }
 
-    return count;
+    if (!found) {
+        printf("Nenhum caractere repetido encontrado\n");
+    }
 }
 
 int main() {
 
     char text[] = "abcdeab";
 
-    printf("%d\n", find_duplicates(text));
+    find_duplicates(text);
+    return 0;
 } 
