@@ -1,2 +1,1 @@
-# My Notes for Intro Computer Science
-
+# introduction-to-computer-science-and-programming-using-python
