@@ -20,5 +20,13 @@ void NewtonRaphsonRootFinder(int32_t value) {
 
 int main(void) {
     NewtonRaphsonRootFinder(24);
+    NewtonRaphsonRootFinder(36);
+    NewtonRaphsonRootFinder(72);
+    NewtonRaphsonRootFinder(900);
+    NewtonRaphsonRootFinder(1000);
+    NewtonRaphsonRootFinder(1000000);
+    NewtonRaphsonRootFinder(5000000);
+    NewtonRaphsonRootFinder(10000000);
+    NewtonRaphsonRootFinder(99999999);
     return 0;
 }
