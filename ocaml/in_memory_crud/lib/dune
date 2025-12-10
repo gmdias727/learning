@@ -1,0 +1,2 @@
+(library
+ (name in_memory_crud))
