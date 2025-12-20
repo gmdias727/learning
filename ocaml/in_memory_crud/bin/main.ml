@@ -1,6 +1,16 @@
 (* open Core;; *)
+open In_memory_crud.My_first_module
 
-let () = print_endline "\nHello, World!\n"
+let () = print_endline "\nHello, World!\n";;
+
+Uuid.speak;;
+let () = speak2 ()
+
+let f = show_sqlite_version () ;;
+
+let () = print_string f
+
+(* let () = MyFirstModule.speak2 *)
 
 type todo = {
     id: int;
@@ -59,8 +69,9 @@ let my_todo_list = { todos = [] };;
 let add_todo todo =
     my_todo_list.todos <- todo :: my_todo_list.todos;;
 
-let remove_todo_from_list_by_id id =
-    my_todo_list.todos <- List.filter (fun todo -> todo.id <> id) my_todo_list.todos;;
+
+(* let remove_todo_from_list_by_id id =
+    my_todo_list.todos <- List.filter (fun todo -> todo.id <> id) my_todo_list.todos;; *)
     (* todo_list := List.filter (fun todo -> todo.title <> title) !todo_list;; *)
 
 
@@ -99,18 +110,17 @@ let print_todos_as_json () =
     | Ok (ptime, _, _) -> ptime
     | Error _ -> failwith "Invalid RFC3339 date format" *)
 
-let release_date_helper str =
+(* let release_date_helper str =
     match Ptime.of_rfc3339 str with
     | Ok (ptime, _, _) -> ptime
-    | Error _ -> failwith "Invalid RFC3339 date format"
+    | Error _ -> failwith "Invalid RFC3339 date format" *)
 
 
 let () =
     let todo1 = create_todo 1 "Learning OCaml" 1 None in
-    (* let todo2 = create_todo 2 "Learning Elixir" 2 None in
-    let todo3 = create_todo 3 "Learning Clojure" 3 
+    let todo2 = create_todo 2 "Learning Elixir" 2 None in
+    (* let todo3 = create_todo 3 "Learning Clojure" 3 
         (Some (release_date_helper "2025-12-10T21:53:00Z")) in *)
-
     (* add_todo todo1;
     add_todo todo2;
     add_todo todo3;
@@ -122,6 +132,7 @@ let () =
     print_todos_as_json (); *)
 
     add_todo todo1;
+    add_todo todo2;
     todo1.title <- "I'm learning!";
     todo1.edition <- 25;
     print_todos_as_json ();

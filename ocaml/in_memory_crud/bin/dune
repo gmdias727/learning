@@ -1,4 +1,5 @@
 (executable
  (public_name in_memory_crud)
  (name main)
+ (modules main uuid)
  (libraries in_memory_crud ptime yojson))

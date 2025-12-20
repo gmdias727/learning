@@ -1,2 +1,4 @@
 (library
- (name in_memory_crud))
+ (name in_memory_crud)
+ (public_name in_memory_crud)
+ (modules my_first_module email))
